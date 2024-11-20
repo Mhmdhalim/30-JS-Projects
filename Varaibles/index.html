@@ -26,7 +26,11 @@
         /*
         misc styles, nothing to do with CSS variables
         */
-
+        :root{
+            --Base-Color: 0px;
+            --Spacing: 0px;
+            --Blur: 0px;
+        }
         body {
         text-align: center;
         background: #193549;
@@ -36,7 +40,12 @@
         font-size: 50px;
         }
         img{
-            width: 200px;
+            width: 300px;
+            transition: all 1s ease;
+            background-color: var(--Base-Color);
+            padding: var(--Spacing);
+            filter: blur(var(--Blur));
+            
         }
         .controls {
         margin-bottom: 50px;
@@ -48,6 +57,26 @@
     </style>
 
     <script>
+        function updateImage(){
+            const Base = document.getElementById("base").value
+            const Spacing = document.getElementById("spacing").value
+            const Blur_ = document.getElementById("blur").value
+            console.log(Base, Spacing, Blur_)
+            document.documentElement.style.setProperty('--Base-Color', `${Base}`)
+            document.documentElement.style.setProperty('--Spacing', `${Spacing}px`)
+            document.documentElement.style.setProperty('--Blur', `${Blur_}px`)
+        }
+        setInterval(updateImage, 1000);
+
+        // const inputs = document.querySelectorAll('.controls input');
+
+        // function handleUpdate() {
+        // const suffix = this.dataset.sizing || '';
+        // document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+        // }
+
+        // inputs.forEach(input => input.addEventListener('change', handleUpdate));
+        // inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
     </script>
 
 </body>
